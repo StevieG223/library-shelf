@@ -35,8 +35,11 @@ function updateLibrary(books){
     books.forEach(book=> {
         let bookEntry = document.createElement('div');
         bookEntry.classList.add("book-card");
-        bookEntry.innerHTML = `<h3>${book.title}</h3><p>${book.author}</p><p>${book.year}</p><p>${book.read}</p>`;
-        console.log(bookEntry.innerHTML);
+        bookEntry.innerHTML = `<h3>${book.title}</h3><p>${book.author}</p><p>${book.year}</p><p>${book.read}</p>
+            <div class="buttons-div">
+                <button class="card-btn" id="complete">Completed</button>
+                <button class="card-btn" id="remove">Remove</button>
+            </div>`;
         library.appendChild(bookEntry);
         }
     )};
