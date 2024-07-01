@@ -28,8 +28,8 @@ let theDaughtersWar = new Book("The Daughter's War", "Christopher Buellman", "20
 addBookToLibrary(theDaughtersWar);
 
 const library = document.querySelector(".library");
-const newBookDiv = document.querySelector(".new-book");
-const newBookBtn = document.querySelector("#new-book-btn")
+const formDivWrapper = document.querySelector("#form-div-wrapper");
+const newBookBtn = document.querySelector("#new-book-btn");
 
 function updateLibrary(books){
     books.forEach(book=> {
@@ -41,10 +41,12 @@ function updateLibrary(books){
         }
     )};
 
+updateLibrary(myLibrary);
+
 newBookBtn.addEventListener("click", ()=>{
     const formDiv = document.createElement("div");
     formDiv.classList.add("form-div");
-    formDiv.innerHTML = `<form action="#" method="post">
+    formDiv.innerHTML = `<form action="#">
                 <label for="title">Title:</label>
                 <input type="text" id="title" required>
                 <label for="author">Author:</label>
@@ -53,11 +55,18 @@ newBookBtn.addEventListener("click", ()=>{
                 <input type="text" id="year" required>  
                 <label for="read">Read:</label>
                 <input type="text" id="read" required>
-                <input type="submit">
+                <input type="submit" id="submit">
             </form>`;
-    newBookDiv.appendChild(formDiv)
+    formDivWrapper.appendChild(formDiv);
+    const bookDataForm = document.querySelector(".form-div");
+    const createNewEntryBtn = document.querySelector("#submit");
+    createNewEntryBtn.addEventListener('click',()=>{
+        const newBookData = Array.from(bookDataForm.querySelectorAll("form input")).reduce((acc,input) => ({...acc, [input.id]: input.value}),
+        {});
+        addBookToLibrary(new Book(newBookData.title, newBookData.author, newBookData.year, newBookData.read));
+        library.replaceChildren();
+        updateLibrary(myLibrary);
+        formDivWrapper.innerHTML='';
+});
+
 })
-
-
-
-updateLibrary(myLibrary);

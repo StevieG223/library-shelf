@@ -164,8 +164,12 @@ form input[type='submit']{
 }
 
 form input[type='submit']{
-    background-color: #7edee7;
+    background-color: #8CB9BD;
 }
+
+form input[type='submit']:hover {
+    background-color: #7edee7;
+  }
 
 form input[type='submit']:active {
     background-color: #7edee7;
