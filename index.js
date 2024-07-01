@@ -28,6 +28,8 @@ let theDaughtersWar = new Book("The Daughter's War", "Christopher Buellman", "20
 addBookToLibrary(theDaughtersWar);
 
 const library = document.querySelector(".library");
+const newBookDiv = document.querySelector(".new-book");
+const newBookBtn = document.querySelector("#new-book-btn")
 
 function updateLibrary(books){
     books.forEach(book=> {
@@ -38,5 +40,24 @@ function updateLibrary(books){
         library.appendChild(bookEntry);
         }
     )};
+
+newBookBtn.addEventListener("click", ()=>{
+    const formDiv = document.createElement("div");
+    formDiv.classList.add("form-div");
+    formDiv.innerHTML = `<form action="#" method="post">
+                <label for="title">Title:</label>
+                <input type="text" id="title" required>
+                <label for="author">Author:</label>
+                <input type="text" id="author" required>
+                <label for="year">Year:</label>
+                <input type="text" id="year" required>  
+                <label for="read">Read:</label>
+                <input type="text" id="read" required>
+                <input type="submit">
+            </form>`;
+    newBookDiv.appendChild(formDiv)
+})
+
+
 
 updateLibrary(myLibrary);
