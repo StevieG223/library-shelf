@@ -192,10 +192,10 @@ form input[type='submit']:active {
     font-size: 0.75rem;
 }
 
-#remove{
+.buttons-div #remove{
     background-color: #b65c52;
 }
 
-#remove:hover{
+.buttons-div #remove:hover{
     background-color: #da8a81;
 }

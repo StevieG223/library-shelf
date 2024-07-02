@@ -32,10 +32,13 @@ const formDivWrapper = document.querySelector("#form-div-wrapper");
 const newBookBtn = document.querySelector("#new-book-btn");
 
 function updateLibrary(books){
+    let i = 1;
     books.forEach(book=> {
         let bookEntry = document.createElement('div');
-        bookEntry.classList.add("book-card");
-        bookEntry.innerHTML = `<h3>${book.title}</h3><p>${book.author}</p><p>${book.year}</p><p>${book.read}</p>
+        bookEntry.classList.add("book-card")
+        bookEntry.id = i;
+        i++;
+        bookEntry.innerHTML = `<h3>${book.title}</h3><p>${book.author}</p><p>${book.year}</p><p class="read">${book.read}</p>
             <div class="buttons-div">
                 <button class="card-btn" id="complete">Completed</button>
                 <button class="card-btn" id="remove">Remove</button>
@@ -71,5 +74,11 @@ newBookBtn.addEventListener("click", ()=>{
         updateLibrary(myLibrary);
         formDivWrapper.innerHTML='';
 });
+})
 
+const readButtons = document.querySelectorAll("button#complete.card-btn"); 
+readButtons.forEach(button =>{
+    button.addEventListener("click", ()=>{
+        button.parentElement.parentElement.querySelector(".read").innerHTML = "already read";
+    })
 })
