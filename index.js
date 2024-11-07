@@ -1,14 +1,13 @@
 const myLibrary =[];
 
-function Book(title, author, year, read){
+class Book{
+    constructor(title, author, year, read){
     this.title = title;
     this.author = author;
     this.year = year;
     this.read = read;
-    this.info = function(){
-       console.log(`'${this.title}' by ${this.author}, published ${this.year}, ${this.read}.`);
+    }
     };
-};
 
 function addBookToLibrary(book){
     myLibrary.push(book);
@@ -93,8 +92,6 @@ function removeButtonClickHandler(eventObj){
     myLibrary.splice(indexPos, 1);
     updateLibrary(myLibrary);
     };
-
-
 
 function createRemoveButtons(){
     const removeButtons = document.querySelectorAll("button#remove"); 
